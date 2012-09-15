@@ -1,1 +1,2 @@
 Dancer;
+Dancer::Plugin::DBIC;
