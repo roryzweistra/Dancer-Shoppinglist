@@ -5,7 +5,7 @@ use base qw/ DBIx::Class::Core /;
 __PACKAGE__->table(		'items'  );
 
 # Table columns
-__PACKAGE__->add_columns(	qw/
+__PACKAGE__->add_columns(	qw /
                                 	guid
                                     	name
 					identifier
