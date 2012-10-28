@@ -18,7 +18,7 @@ sub create {
 
 	$item->insert();
 
-	return $poi->in_storage();
+	return $item->in_storage();
 };
 
 sub new {
