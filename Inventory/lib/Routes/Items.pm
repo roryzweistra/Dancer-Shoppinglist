@@ -1,16 +1,33 @@
 package Inventory::Routes::Items;
 
 use Dancer ':syntax';
-use Dancer::Plugin::REST;
 
 use Inventory::Items::List;
 use Inventory::Items::Item;
 
 use strict;
 
-prepare_serializer_for_format;
+get 	'/items'	=> \&list_items;
+post	'/item/add'	=> \&add_item;
 
-get '/items/:format?'	=> \&list_items;
+sub add_item {
+
+	# Create a list of parameters that are allowed for this request.
+	my @allowed_fields	= qw /
+		name
+	/;
+
+	my $values 		= {};
+
+        foreach my $allowed ( @allowed_fields ) {
+                $values->{ $allowed } = param $allowed;
+        }
+
+	# Instanciate item object.
+	my $item		= Inventory::Items::Item->new();
+
+	return $item->add( $values->{ name } );
+};
 
 sub list_items {
 
@@ -24,8 +41,4 @@ sub list_items {
 	template 'items' => $items;
 };
 
-resource item 	=> 
-	get	=> \&get_item, 
-	create	=> \&add_item, 
-	update	=> \&update_item, 
-	delete	=> \&delete_item; 
+1;
