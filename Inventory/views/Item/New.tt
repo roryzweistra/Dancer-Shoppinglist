@@ -1,0 +1,5 @@
+<form method="POST" action="/item/create">
+	Name: <input name="name" type="text" />
+	<br />
+	<input type="submit" value="create" />
+</form>

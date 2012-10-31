@@ -19,13 +19,13 @@ sub list_items {
 	my @items;
 	return @items;
 	#return \@items;
-}
+};
 
 sub new {
 	my $class	= shift;
 	my $self	= bless {}, $class;
 
 	return $self;
-}
+};
 
 1;
