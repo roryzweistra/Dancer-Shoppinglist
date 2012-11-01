@@ -10,7 +10,9 @@ use strict;
 prefix	'/item';
 
 get	'/new'		=> \&new_item;
+get	'/id/:id'	=> \&get_item;
 post	'/create'	=> \&create_item;
+put	'/update'	=> \&update_item;
 
 sub create_item {
 
@@ -32,8 +34,34 @@ sub create_item {
 };
 
 
+sub get_item {
+	my $guid = param 'id';
+
+	return $guid;
+	
+}
+
 sub new_item {
 	template 'Item/New';
+};
+
+sub update_item {
+	
+	my @allowed_fields	= qw /
+		guid
+		name
+	/;
+
+	my $values = {};
+
+	foreach my $allowed ( @allowed_fields ) {
+		$values->{ $allowed } = param $allowed;	
+	}
+
+	my $item	= Inventory::Items::Item->new();
+	my $updated	= $item->create( $values );
+	
+	return $updated;
 };
 
 1;
