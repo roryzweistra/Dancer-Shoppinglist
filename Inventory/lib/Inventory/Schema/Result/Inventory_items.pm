@@ -17,5 +17,8 @@ __PACKAGE__->add_columns(	qw /
 __PACKAGE__->set_primary_key(	'guid'    );
 
 # Add relationships for this table
+__PACKAGE__->belongs_to(	'inventories'	=> 'Inventory::Schema::Result::Inventories', {
+	'foreign.guid'	=> 'self.inventory'
+});
 
 1;
