@@ -1,0 +1,33 @@
+<div id="pjax">
+<h1 id="pageHeader">Login</h1>
+<div class="optionsTop"></div>
+
+	<div id="content">
+	
+		<div class="columns two">
+		<div class="primary">
+
+		<form method="post" name="login_user" id="login_user" enctype="multipart/form-data" action="/login" _lpchecked="1">
+			<div>
+				<div class="field text required">
+					<label for="emailField">Username<span class="asterisk">*</span></label>
+					<div class="explanation">Your email address is your username.</div>
+					<input type="text" name="email" id="emailField">
+				</div>
+				<div class="field text required">
+					<label for="passwordField">Password<span class="asterisk">*</span></label>
+					<div class="explanation">Your chosen password.</div>
+					<input type="password" name="password" id="passwordField" />
+				</div>
+				<div class="field submit">
+					<button id="login_button" type="submit">Login</button>
+				</div>
+			</div>
+		</form>
+		
+		</div>
+		</div>
+		
+	<!--/content-->
+	</div>
+</div>
