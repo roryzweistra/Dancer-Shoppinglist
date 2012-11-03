@@ -1,0 +1,25 @@
+<div id="pjax">
+<h1 id="pageHeader">Inventories</h1>
+<div class="optionsTop"></div>
+
+	<div id="content">
+		<div class="columns two">
+			<div class="primary">
+				<a href="/inventories/new" class="pjax">Add Inventory</a>	
+				<nav id="inventory_list">
+					<li>
+						<a>Inventory 1</a>
+					</li>
+					<li>
+						<a>Inventory 2</a>
+					</li>
+					<li>
+						<a>Inventory 3</a>
+					</li>
+				</nav>
+			</div>
+		</div>
+		
+	<!--/content-->
+	</div>
+</div>
