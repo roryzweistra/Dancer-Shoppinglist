@@ -2,6 +2,7 @@ package Inventory::Routes::Account;
 
 use Dancer ':syntax';
 
+use Inventory::Accounts::Admin;
 use Inventory::Authorise::Web;
 
 use strict;
@@ -9,6 +10,11 @@ use strict;
 prefix	'/account';
 
 post    '/create'	=> \&create_account;
+get     '/created'  => \&account_created;
+
+sub account_created {
+    template 'Accounts/Created', {}, { layout => 0 };
+};
 
 sub create_account {
     my @allowed_fields = qw /
@@ -22,12 +28,10 @@ sub create_account {
         $values->{ $value } = param $value;
     }
     
-    info $values;
-    
-	my $account = Inventory::Authorise::Web->new();
+	my $account = Inventory::Accounts::Admin->new();
     my $created = $account->create_user( $values->{ username }, $values->{ password } );
     
-    return $created;
+    forward '/created';
 };
 
 1;
