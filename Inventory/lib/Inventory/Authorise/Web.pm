@@ -4,13 +4,14 @@ use Dancer ':syntax';
 use Dancer::Plugin::DBIC 'schema';
 
 use Crypt::SaltedHash;
+use Data::GUID::URLSafe;
 
 sub check_login {
     my $self        = shift;
     my $email       = shift;
     my $password    = shift;
 
-    my $user        = schema( 'inventory' )->resultset( 'Users' )->find(
+    my $user        = schema( 'Inventory' )->resultset( 'Users' )->find(
         {
             username    => $email
         }
@@ -26,18 +27,21 @@ sub create_user {
 	my $self	= shift;
 	my $email	= shift;
 	
-	return 'exists' if schema( 'inventory' )->resultset( 'Users' )->find(
+	return 'exists' if schema( 'Inventory' )->resultset( 'Users' )->find(
 		{
             username    => $email
 		}
 	);
 
+    my $guid    = Data::GUID->new->as_base64_urlsafe;
+
 	my $password    = shift;
-	my $csh	        = Crypt::SaltedHash->new( algorithm => 'sha256' );
+	my $csh	        = Crypt::SaltedHash->new();
 	$csh->add( $password );
 
-	my $new_user	= schema( 'inventory' )->resultset( 'Users' )->create(
+	my $new_user	= schema( 'Inventory' )->resultset( 'Users' )->create(
 		{
+            guid        => $guid,
 			username    => $email,
 			password	=> $csh->generate(),
 		}
