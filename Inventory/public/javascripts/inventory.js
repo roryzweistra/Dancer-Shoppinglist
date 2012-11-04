@@ -6,25 +6,25 @@ $( document ).ready( function() {
 });
 
 var init_pjax = function() {
-        $( 'a.pjax' ).pjax( '#main', {
-            fragment: '#pjax'
-        });
+    $( 'a.pjax' ).pjax( '#main', {
+        fragment: '#pjax'
+    });
 
-        $( '#main' )
-        .bind( 'pjax:start', function() {
-		console.log( 'pjax call' );
-                //$( '#main'      ).fadeOut('slow');
-        	//$( '#loader'    ).show();
+    $( '#main' )
+    .bind( 'pjax:start', function() {
+    console.log( 'pjax call' );
+            //$( '#main'      ).fadeOut('slow');
+        //$( '#loader'    ).show();
 
-        })
-        .bind( 'pjax:end', function() {
+    })
+    .bind( 'pjax:end', function() {
 
-                //$( '#loader'    ).hide();
-                $( '#main'      ).fadeIn('slow');
-		wire_create_inventory();
-		wire_register_form_button();
-		wire_register_account_button();
-        });
+            //$( '#loader'    ).hide();
+            $( '#main'      ).fadeIn('slow');
+    wire_create_inventory();
+    wire_register_form_button();
+    wire_register_account_button();
+    });
 };
 
 var wire_create_inventory = function() {
@@ -42,19 +42,19 @@ var wire_register_form_button = function() {
 	$( '#register_button' ).click( function( e ) {
 		e.preventDefault();
 
-		
 		$.ajax({
-                	type    : 'GET',
-                	url     : '/register',
-                	success : function( data ) {
-				$( '#login_user'	).addClass( 'disabled'		);
-				$( '#emailField' 	).attr( 'disabled', 'yes' 	);
-				$( '#passwordField'	).attr( 'disabled', 'yes' 	);
-				$( '#login_button'	).attr( 'disabled', 'yes' 	);
-				$( '#register_section' ).html( data );
-				wire_register_account_button();
-                        }
-                });
+            type    : 'GET',
+            url     : '/register',
+            success : function( data ) {
+                $( '#login_user'	).addClass( 'disabled'		);
+                $( '#emailField' 	).attr( 'disabled', 'yes' 	);
+                $( '#passwordField'	).attr( 'disabled', 'yes' 	);
+                $( '#login_button'	).attr( 'disabled', 'yes' 	);
+                $( '#register_section' ).html( data );
+
+                wire_register_account_button();
+            }
+        });
 	});
 };
 
@@ -64,7 +64,11 @@ var wire_register_account_button = function() {
 
 		$.ajax({
 			type	: 'POST',
-			url	: '/account/create',
+            data    : {
+                'username'  : $( '#registerEmailField'      ).val(),
+                'password'  : $( '#registerPasswordField'   ).val()
+            },
+			url     : '/account/create',
 			success	: function( data ) {
 				$( '#login_user'	).removeClass( 'disabled'	);
 				$( '#emailField' 	).removeAttr( 'disabled'	);
