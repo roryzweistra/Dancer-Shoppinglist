@@ -1,21 +1,21 @@
 <section id="register_section">
 
-<form method="post" name="register_user" id="register_user" enctype="multipart/form-data" action="/create_account">
-	<div>
-        	<div class="field text required">
-                        <label for="registerEmailField">Email address<span class="asterisk">*</span></label>
-                        <div class="explanation">We use your emailaddress as your login name. Please register with an email address that you regulary check so you don't miss any emails send to you.</div>
-                	<input type="text" name="email" id="registerEmailField">
-                </div>
+    <form method="post" name="register_user" id="register_user" enctype="multipart/form-data" action="/create_account">
+        <div>
                 <div class="field text required">
-                        <label for="registerPasswordField">Password<span class="asterisk">*</span></label>
-                        <div class="explanation">Choose a password.</div>
-                	<input type="password" name="password" id="registerPasswordField" />
+                            <label for="registerEmailField">Email address<span class="asterisk">*</span></label>
+                            <div class="explanation">We use your emailaddress as your login name. Please register with an email address that you regulary check so you don't miss any emails send to you.</div>
+                        <input type="text" name="username" id="registerEmailField">
+                    </div>
+                    <div class="field text required">
+                            <label for="registerPasswordField">Password<span class="asterisk">*</span></label>
+                            <div class="explanation">Choose a password.</div>
+                        <input type="password" name="password" id="registerPasswordField" />
+                    </div>
+                    <div class="field submit">
+                <button id="register_account_button" type="submit">Create account</button>
                 </div>
-                <div class="field submit">
-			<button id="register_account_button" type="submit">Create account</button>
-        	</div>
-	</div>
-</form>
+        </div>
+    </form>
 
 </section>
