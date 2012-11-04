@@ -11,8 +11,8 @@ sub list_inventories {
 
 	foreach my $item ( @results ) {
 		push ( @items, {
-			guid		=> $item->{ guid 	},
-			name		=> $item->{ name	},
+			guid	=> $item->{ guid 	},
+			name    => $item->{ name	},
 		});
 	}
 

@@ -9,8 +9,8 @@ sub list_categories {
 
 	my @categories;
 
-	foreach my $category ( @categories ) {
-		push ( @items, {
+	foreach my $category ( @results ) {
+		push ( @categories, {
 			guid		=> $category->{ guid 	},
 			name		=> $category->{ name	},
 		});

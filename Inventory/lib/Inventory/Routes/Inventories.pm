@@ -9,7 +9,7 @@ use strict;
 prefix	'/inventories';
 
 get	'/new'	=> \&new;
-get 	'/list'	=> \&list;
+get '/list'	=> \&list;
 
 sub new {
 	template 'Inventories/New';

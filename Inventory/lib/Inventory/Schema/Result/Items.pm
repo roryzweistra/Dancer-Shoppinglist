@@ -6,9 +6,9 @@ __PACKAGE__->table(		'items'  );
 
 # Table columns
 __PACKAGE__->add_columns(	qw /
-                                	guid
-                                    	name
-                                /
+        guid
+        name
+    /
 );
 
 # Primary key of the table

@@ -9,10 +9,10 @@ use strict;
 # Prefix the urls
 prefix	'/item';
 
-get	'/new'		=> \&new_item;
-get	'/id/:id'	=> \&get_item;
-post	'/create'	=> \&create_item;
-put	'/update'	=> \&update_item;
+get     '/new'		=> \&new_item;
+get     '/id/:id'	=> \&get_item;
+post    '/create'	=> \&create_item;
+put     '/update'   => \&update_item;
 
 sub create_item {
 
@@ -21,14 +21,14 @@ sub create_item {
 		name
 	/;
 
-	my $values 		= {};
+	my $values  = {};
 
         foreach my $allowed ( @allowed_fields ) {
-                $values->{ $allowed } = param $allowed;
+            $values->{ $allowed } = param $allowed;
         }
 
 	# Instanciate item object.
-	my $item		= Inventory::Items::Item->new();
+	my $item    = Inventory::Items::Item->new();
 
 	return $item->create( $values->{ name } );
 };
@@ -59,7 +59,7 @@ sub update_item {
 	}
 
 	my $item	= Inventory::Items::Item->new();
-	my $updated	= $item->create( $values );
+	my $updated = $item->create( $values );
 	
 	return $updated;
 };

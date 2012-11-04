@@ -11,8 +11,10 @@ sub create {
 	my $name	= shift;
 	my $guid	= Data::GUID->new->as_base64_urlsafe;
 	my $item	= schema( 'Inventory' )->resultset( 'Items' )->update_or_new(
+        {
 			guid	=> $guid,
-			name	=> $name, 
+			name	=> $name,
+        },
 		{
 			key => 'primary'
 		}

@@ -3,11 +3,11 @@ use Dancer ':syntax';
 
 our $VERSION = '0.1';
 
-get '/' 		=> sub {
+get '/' 		    => sub {
 	template 'index';
 };
 
-get '/inventories'	=> sub {
+get '/inventories'  => sub {
 	template 'inventories';
 };
 
