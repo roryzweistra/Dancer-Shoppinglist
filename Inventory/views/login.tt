@@ -1,5 +1,5 @@
 <div id="pjax">
-<h1 id="pageHeader">Login</h1>
+<h1 id="pageHeader">Login / Register</h1>
 <div class="optionsTop"></div>
 
 	<div id="content">
@@ -11,12 +11,12 @@
 			<div>
 				<div class="field text required">
 					<label for="emailField">Username<span class="asterisk">*</span></label>
-					<div class="explanation">Your email address is your username.</div>
+					<div class="explanation hide">Your email address is your username.</div>
 					<input type="text" name="email" id="emailField">
 				</div>
 				<div class="field text required">
 					<label for="passwordField">Password<span class="asterisk">*</span></label>
-					<div class="explanation">Your chosen password.</div>
+					<div class="explanation hide">Your chosen password.</div>
 					<input type="password" name="password" id="passwordField" />
 				</div>
 				<div class="field submit">
@@ -26,6 +26,17 @@
 		</form>
 		
 		</div>
+
+		<div class="secondary">
+			<section id="register_section">
+				<h3>Not registered yet?</h3>
+				<p>
+					If you wish to register for this website, please click the button below and fill in the form.
+				</p>
+				<button id="register_button">Register</button>
+			</section>
+		</div>
+
 		</div>
 		
 	<!--/content-->

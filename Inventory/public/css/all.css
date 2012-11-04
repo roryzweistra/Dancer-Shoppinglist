@@ -242,8 +242,8 @@ button:hover, button:focus, button:active, input[type=submit]:hover, input[type=
 button:active, input[type=submit]:active, .button:active {
 background-image:none;
 }
-button:disabled {
-opacity:.5;
+button:disabled, input:disabled {
+	opacity:.3;
 }
 button::-moz-focus-inner, input::-moz-focus-inner {
 border:0;
@@ -267,6 +267,10 @@ input[type="text"], input[type="search"], input[type="password"], textarea, sele
 	-webkit-border-radius	: .6rem;
 	-moz-border-radius	: .6rem;
 	border-radius		: .6rem;
+}
+
+.disabled {
+	opacity	: .3;
 }
 
 select {
@@ -397,7 +401,10 @@ width:100%;
 	font-size	: 1.4rem;
 	margin		: 0 0 10px;
 	margin		: 0 0 1rem;
-	display		: none;
+}
+
+.hide {
+	display	: none;
 }
 
 .info {

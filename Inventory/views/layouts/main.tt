@@ -20,7 +20,7 @@
 		<li><a href="/">Home</a></li>
 		<li><a class="pjax" href="/inventories">Inventories</a></li>
 		<li><a class="pjax" href="/profile">Profile</a></li>
-		<li><a id="login" class="pjax" href="/login">Login</a></li>
+		<li><a id="login" class="pjax" href="/login">Login / Register</a></li>
 	</ul>
 <!--/nav-->
 </nav>
