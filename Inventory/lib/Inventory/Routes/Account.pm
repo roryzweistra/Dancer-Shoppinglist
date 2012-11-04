@@ -12,7 +12,7 @@ post    '/create'	=> \&create_account;
 
 sub create_account {
     my @allowed_fields = qw /
-        email
+        username
         password
     /;
     
@@ -22,8 +22,10 @@ sub create_account {
         $values->{ $value } = param $value;
     }
     
+    info $values;
+    
 	my $account = Inventory::Authorise::Web->new();
-    my $created = $account->create_user( $values->{ email }, $values->{ password } );
+    my $created = $account->create_user( $values->{ username }, $values->{ password } );
     
     return $created;
 };
