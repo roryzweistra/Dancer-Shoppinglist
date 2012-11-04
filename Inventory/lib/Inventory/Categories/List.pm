@@ -5,7 +5,7 @@ use Dancer::Plugin::DBIC 'schema';
 
 sub list_categories {
 	my $self	= shift;
-	my @results	= schema( 'inventory' )->resultset( 'Categories' )->all();
+	my @results	= schema( 'Inventory' )->resultset( 'Categories' )->all();
 
 	my @categories;
 
