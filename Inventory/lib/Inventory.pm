@@ -20,13 +20,10 @@ get '/login'		=> sub {
 };
 
 get '/register'		=> sub {
-	template 'register', {}, { layout => 0 };
+	template 'Accounts/Register', {}, { layout => 0 };
 };
 
-post '/account/create'	=> sub {
-	return 1;
-};
-
+load_app 'Inventory::Routes::Account';
 load_app 'Inventory::Routes::Items';
 load_app 'Inventory::Routes::Item';
 load_app 'Inventory::Routes::Inventories';
