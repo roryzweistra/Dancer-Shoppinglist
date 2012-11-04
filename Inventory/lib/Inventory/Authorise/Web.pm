@@ -8,8 +8,12 @@ use Data::GUID::URLSafe;
 
 sub check_login {
     my $self        = shift;
+    
     my $email       = shift;
+    return 101 unless $email;
+    
     my $password    = shift;
+    return 102 unless $password;
 
     my $user        = schema( 'Inventory' )->resultset( 'Users' )->find(
         {
@@ -17,37 +21,13 @@ sub check_login {
         }
     );
 
-    return 0 unless $user;
+    return 103 unless $user;
 
     my $csh		= Crypt::SaltedHash->new();
 	my $valid	= $csh->validate( $user->password, $password );
-};
-
-sub create_user {
-	my $self	= shift;
-	my $email	= shift;
-	
-	return 'exists' if schema( 'Inventory' )->resultset( 'Users' )->find(
-		{
-            username    => $email
-		}
-	);
-
-    my $guid    = Data::GUID->new->as_base64_urlsafe;
-
-	my $password    = shift;
-	my $csh	        = Crypt::SaltedHash->new();
-	$csh->add( $password );
-
-	my $new_user	= schema( 'Inventory' )->resultset( 'Users' )->create(
-		{
-            guid        => $guid,
-			username    => $email,
-			password	=> $csh->generate(),
-		}
-	);
-
-	return $new_user->in_storage;	
+    return 104 unless $valid;
+    
+    return 100;
 };
 
 sub new {
