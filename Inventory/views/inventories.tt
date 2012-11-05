@@ -5,6 +5,7 @@
 	<div id="content">
 		<div class="columns two">
 			<div class="primary">
+                <% session.logged_in %>
 				<a href="/inventories/new" class="pjax">Add Inventory</a>	
 				<nav id="inventory_list">
 					<li>
@@ -13,10 +14,14 @@
 					<li>
 						<a>Inventory 2</a>
 					</li>
+                    <% IF session.logged_in %>
 					<li>
 						<a>Inventory 3</a>
 					</li>
+                    <% END %>
 				</nav>
+                <% info user %> : <% session.id %> : <% logged_in %>
+                <% user %>
 			</div>
 		</div>
 		

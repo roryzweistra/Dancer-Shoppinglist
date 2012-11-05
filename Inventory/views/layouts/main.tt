@@ -19,8 +19,13 @@
 	<ul>
 		<li><a href="/">Home</a></li>
 		<li><a class="pjax" href="/inventories">Inventories</a></li>
-		<li><a class="pjax" href="/profile">Profile</a></li>
-		<li><a id="login" class="pjax" href="/login">Login / Register</a></li>
+		<li><a class="pjax" href="/profile">Profile</a></li><% user %>
+        <% IF session.id %>
+		<li><a id="logout" href="/logout">Logout</a></li>
+        <% ELSE %>
+        <li><a id="login" class="pjax" href="/login">Login / Register</a></li>
+        <% END %>
+        <% session.user %> : <% session.user %> 
 	</ul>
 <!--/nav-->
 </nav>

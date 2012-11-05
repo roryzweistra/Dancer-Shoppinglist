@@ -19,7 +19,7 @@ sub account_created {
 };
 
 sub authorised {
-    return 1;
+    redirect '/inventories';
 };
 
 sub create_account {
@@ -54,6 +54,11 @@ sub login_account {
     
     my $account     = Inventory::Authorise::Web->new();
     my $logged_in   = $account->check_login( $values->{ username }, $values->{ password } );
+    info 'logged_in: ' . session('logged_in');
+    
+    if ( $logged_in == 100 ) {
+        forward '/account/authorised', {}, { method => 'GET' };
+    }
 };
 
 1;

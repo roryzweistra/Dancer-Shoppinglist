@@ -19,11 +19,24 @@ var init_pjax = function() {
     })
     .bind( 'pjax:end', function() {
 
-            //$( '#loader'    ).hide();
-            $( '#main'      ).fadeIn('slow');
-    wire_create_inventory();
-    wire_register_form_button();
-    wire_register_account_button();
+        //$( '#loader'    ).hide();    
+        $( '#main'      ).fadeIn('slow');
+        wire_create_inventory();
+        wire_register_form_button();
+        wire_register_account_button();
+    });
+};
+
+var wire_login_form = function() {
+    $( '#login_user' ).submit( function( e ) {
+        e.preventDefault();
+        $.ajax({
+            type    : 'POST',
+            url     : '/account/login',
+            success : function( data ) {
+                console.log( 'Login succes' );
+            }
+        });
     });
 };
 

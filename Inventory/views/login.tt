@@ -12,7 +12,7 @@
 				<div class="field text required">
 					<label for="emailField">Username<span class="asterisk">*</span></label>
 					<div class="explanation hide">Your email address is your username.</div>
-					<input type="text" name="email" id="emailField">
+					<input type="text" name="username" id="emailField">
 				</div>
 				<div class="field text required">
 					<label for="passwordField">Password<span class="asterisk">*</span></label>

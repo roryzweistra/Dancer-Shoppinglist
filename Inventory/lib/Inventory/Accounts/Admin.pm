@@ -43,7 +43,7 @@ sub create_user {
     # Try to execute the INSERT statement, return an error if fails.
 	return 204 unless $new_user->in_storage;
 
-    # We're all set, setup session values.
+    # We're all set.
     return 200;
 };
 
