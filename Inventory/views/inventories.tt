@@ -5,24 +5,25 @@
 	<div id="content">
 		<div class="columns two">
 			<div class="primary">
-                <% session.logged_in %>
+                <h2>Inventory</h2>
 				<a href="/inventories/new" class="pjax">Add Inventory</a>	
-				<nav id="inventory_list">
+				
+			</div>
+
+            <div class="secondary">
+                <h2>Inventory overview <button>Create new inventory</button></h2>
+                <nav id="inventory_list">
 					<li>
 						<a>Inventory 1</a>
 					</li>
 					<li>
 						<a>Inventory 2</a>
 					</li>
-                    <% IF session.logged_in %>
 					<li>
 						<a>Inventory 3</a>
 					</li>
-                    <% END %>
 				</nav>
-                <% info user %> : <% session.id %> : <% logged_in %>
-                <% user %>
-			</div>
+            </div>
 		</div>
 		
 	<!--/content-->
