@@ -4,9 +4,10 @@ use Dancer ':syntax';
 our $VERSION = '0.1';
 
 hook before_template => sub {
-  my $tokens                = shift;
-  $tokens->{ logged_in  }   = session('logged_in');
-  $tokens->{ user       }   = session('user');
+    my $tokens                = shift;
+    $tokens->{ 'user_logged_in' }   = session( 'user_logged_in' );
+    $tokens->{ 'user_id'        }   = session( 'user_id'        );
+    $tokens->{ 'user_email'     }   = session( 'user_email'     );
 };
 
 get '/' 		    => sub {
