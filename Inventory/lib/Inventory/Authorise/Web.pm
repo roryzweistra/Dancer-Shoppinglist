@@ -27,8 +27,9 @@ sub check_login {
 	my $valid	= $csh->validate( $user->password, $password );
     return 104 unless $valid;
     
-    session logged_in => 1;
-    session user      => $email;
+    session 'user_id'           => $user->guid;
+    session 'user_logged_in'    => true;
+    session 'user_email'        => $email;
     return 100;
 };
 
