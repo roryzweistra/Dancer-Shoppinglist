@@ -9,6 +9,7 @@
 	<link href="/css/all.css" rel="stylesheet">
 	<script type="text/javascript" src="/javascripts/jquery.js"></script>
 	<script type="text/javascript" src="/javascripts/jquery.pjax.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.tablesorter.min.js"></script>
 	<script type="text/javascript" src="/javascripts/inventory.js"></script>
 	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
