@@ -2,3 +2,4 @@ Inventory/config-rory.yml
 Inventory/logs
 Inventory/sessions
 *.kpf
+.DS_Store
