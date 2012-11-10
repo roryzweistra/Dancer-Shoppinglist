@@ -1,28 +1,15 @@
-<div id="pjax">
-<h1 id="pageHeader">Create new inventory</h1>
-<div class="optionsTop"></div>
+<h3>Create new inventory</h3>
 
-	<div id="content">
-	
-		<div class="columns two">
-		<div class="primary">
+<div>
+    <div class="field text required">
+        <label for="nameField">Name<span class="asterisk">*</span></label>
 
-		<form method="post" name="create_inventory" id="create_inventory" enctype="multipart/form-data" action="/inventories/new">
-			<div>
-				<div class="field text required">
-					<label for="nameField">Name<span class="asterisk">*</span></label>
-					<div class="explanation">Your inventory name.</div>
-					<input type="text" name="name" id="nameField">
-				</div>
-				<div class="field submit">
-					<button id="create_new_inventory" type="submit">Create</button>
-				</div>
-			</div>
-		</form>
-		
-		</div>
-		</div>
-		
-	<!--/content-->
-	</div>
+        <div class="explanation">
+            Your inventory name.
+        </div><input type="text" name="inventory_name" id="nameField">
+    </div>
+
+    <div class="field submit">
+        <button id="create_new_inventory_button" type="submit">Create inventory</button> <button id="cancel_new_inventory_button" type="submit">Cancel</button>
+    </div>
 </div>
