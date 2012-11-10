@@ -3,29 +3,75 @@
 <div class="optionsTop"></div>
 
 	<div id="content">
-		<div class="columns two">
+        <button id="inventory_controls">Inventory controls</button>
+		<div class="columns two">        
 			<div class="primary">
-                <h2>Inventory</h2>
-				<a href="/inventories/new" class="pjax">Add Inventory</a>	
+				<section id="inventory">
+                    <p>
+                        Change inventory: <select id="choose_inventory_list"></select>
+                    </p>
+                    <h2>Inventory</h2>
+                    <form>
+                        <div class="field">
+                            <input id="search_inventory_item" type="text" name="search">
+                            <button type="submit"><span class="ss-search"></span>Search or add item</button>
+                        </div>
+                    </form>
+                    
+                    <table id="inventory_table" class="tablesorter">
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <th>Item</th>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </section>	
 				
 			</div>
 
             <div class="secondary">
-                <h2>Inventory overview <button>Create new inventory</button></h2>
-                <nav id="inventory_list">
-					<li>
-						<a>Inventory 1</a>
-					</li>
-					<li>
-						<a>Inventory 2</a>
-					</li>
-					<li>
-						<a>Inventory 3</a>
-					</li>
-				</nav>
+
+                <section id="inventory_item_control">
+                    <h2>Select an item to add to your list.</h2>
+                    <p>
+                        We have a large number of items already listed. When searching for an item with the search
+                        box on the left we provide you a list of possible options from our item list.
+                    </p>
+                    
+                    <h2>Add a new item.</h2>
+                    <p>
+                        If the item you want to add is not in our list, you can add them using the form below.
+                        The item will be added to your inventory and to our item list so you can search for it then.
+                    </p>
+                
+                </section>
+
+                <section id="inventory_control">
+                    <h2>Inventory controls</h2>
+                    <p>
+                        Use these button to control your inventories. You can add new ones or delete existing ones as you like, however deleting an inventory will cause all added items to be removed from the inventory too.
+                    </p>
+                    <div id="new_inventory_section">
+                        <h3>New inventory controls</h3>
+                        <form>
+                            <button id="create_new_inventory">Create new inventory</button>
+                        </form>
+                    </div>
+                    <div>
+                        <h3>Existing inventory controls</h3>
+                        <select id="inventory_list">
+                        </select>
+                        <button id="edit_inventory">Edit inventory</button>
+                        <button id="delete_inventory">Delete inventory</button>
+                    </div>
+                </section>
             </div>
 		</div>
-		
+
 	<!--/content-->
 	</div>
 </div>
