@@ -5,20 +5,31 @@ use Dancer::Plugin::DBIC 'schema';
 
 sub list_inventories {
 	my $self	= shift;
-	my @results	= schema( 'Inventory' )->resultset( 'Inventories' )->all();
+    my $user_id = shift;
+    
+	my @results	= schema( 'Inventory' )->resultset( 'Inventories' )->search(
+        {
+            owner   => $user_id
+        },
+        {
+            columns => [ qw /
+                guid
+                name
+            / ]
+        }
+    );
+    info 'results: ' . @results;
+	my @inventories;
 
-	my @items;
-
-	foreach my $item ( @results ) {
-		push ( @items, {
-			guid	=> $item->{ guid 	},
-			name    => $item->{ name	},
+	foreach my $inventory ( @results ) {
+        info 'result: ' . $inventory;
+		push ( @inventories, {
+			guid	=> $inventory->guid,
+			name    => $inventory->name,
 		});
 	}
 
-	my @items;
-	return @items;
-	#return \@items;
+    return \@inventories;
 };
 
 sub new {
