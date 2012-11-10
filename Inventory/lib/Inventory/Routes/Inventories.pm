@@ -3,24 +3,37 @@ package Inventory::Routes::Inventories;
 use Dancer ':syntax';
 
 use Inventory::Inventories::List;
+use Inventory::Inventories::Inventory;
 
 use strict;
 
 prefix	'/inventories';
 
-get	'/new'	=> \&new;
-get '/list'	=> \&list;
+get	    '/new'	    => \&new_inventory;
+post    '/create'   => \&create_inventory;
+get     '/list'	    => \&list_inventories;
 
-sub new {
-	template 'Inventories/New';
+sub new_inventory {
+	template 'Inventories/New', {}, { layout => 0 };
 };
 
-sub list {
+sub create_inventory {
+    my $name    = param 'inventory_name';
+    my $user_id = session( 'user_id' );
+    info 'userid: ' . $user_id;
+    
+    my $inventory   = Inventory::Inventories::Inventory->new();
+    my $created     = $inventory->create( session( 'user_id' ), $name );
+    
+    return $created;
+};
 
-	my $list 	= Inventory::Inventories::List->new();
-	my $items	= $list->list_items();
-
-	template 'Inventories/List' => $items;
+sub list_inventories {
+    my $user_id     = session( 'user_id' );
+	my $list 	    = Inventory::Inventories::List->new();
+	my $inventories = $list->list_inventories( $user_id );
+    info $inventories;
+	return $inventories;
 };
 
 1;
