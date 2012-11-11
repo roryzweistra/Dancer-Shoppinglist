@@ -3,6 +3,7 @@ package Inventory::Routes::Item;
 use Dancer ':syntax';
 
 use Inventory::Items::Item;
+use Inventory::Utils;
 
 use strict;
 
@@ -19,18 +20,26 @@ sub create_item {
 	# Create a list of parameters that are allowed for this request.
 	my @allowed_fields	= qw /
 		name
+        packaging
+        unit
+        content
+        add_to_inventory
 	/;
 
 	my $values  = {};
 
-        foreach my $allowed ( @allowed_fields ) {
-            $values->{ $allowed } = param $allowed;
-        }
+    foreach my $allowed ( @allowed_fields ) {
+        $values->{ $allowed } = param $allowed;
+    }
+
+    if ( $values->{ name } eq '' ) {
+        return Inventory::Utils->new->create_status( 302 );
+    }
 
 	# Instanciate item object.
 	my $item    = Inventory::Items::Item->new();
 
-	return $item->create( $values->{ name } );
+	return Inventory::Utils->new->create_status( $item->create( $values ) );
 };
 
 
@@ -39,7 +48,7 @@ sub get_item {
 
 	return $guid;
 	
-}
+};
 
 sub new_item {
 	template 'Item/New';

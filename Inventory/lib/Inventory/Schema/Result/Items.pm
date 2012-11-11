@@ -2,12 +2,15 @@ package Inventory::Schema::Result::Items;
 use base qw/ DBIx::Class::Core /;
 
 # Table name
-__PACKAGE__->table(		'items'  );
+__PACKAGE__->table(		'Items'  );
 
 # Table columns
 __PACKAGE__->add_columns(	qw /
         guid
         name
+        packaging
+        unit
+        content
     /
 );
 

@@ -649,6 +649,10 @@ border-radius:.6rem;
     margin-right    : 10px;
 }
 
+#search_inventory_item {
+    width   : 515px;
+}
+
 /* tables */
 table.tablesorter {
 	font-family:arial;

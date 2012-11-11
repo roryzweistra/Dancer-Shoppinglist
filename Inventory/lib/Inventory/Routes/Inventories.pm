@@ -20,7 +20,6 @@ sub new_inventory {
 sub create_inventory {
     my $name    = param 'inventory_name';
     my $user_id = session( 'user_id' );
-    info 'userid: ' . $user_id;
     
     my $inventory   = Inventory::Inventories::Inventory->new();
     my $created     = $inventory->create( session( 'user_id' ), $name );
@@ -32,7 +31,7 @@ sub list_inventories {
     my $user_id     = session( 'user_id' );
 	my $list 	    = Inventory::Inventories::List->new();
 	my $inventories = $list->list_inventories( $user_id );
-    info $inventories;
+
 	return $inventories;
 };
 

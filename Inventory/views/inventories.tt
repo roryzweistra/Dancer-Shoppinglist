@@ -13,8 +13,7 @@
                     <h2>Inventory</h2>
                     <form>
                         <div class="field">
-                            <input id="search_inventory_item" type="text" name="search">
-                            <button type="submit"><span class="ss-search"></span>Search or add item</button>
+                            <input id="search_inventory_item" type="text" name="search" value="Search items in your inventory">
                         </div>
                     </form>
                     
@@ -42,11 +41,57 @@
                         box on the left we provide you a list of possible options from our item list.
                     </p>
                     
+                    <table>
+                    <tbody>
+                    </tbody>
+                    </table>
+                    
                     <h2>Add a new item.</h2>
                     <p>
                         If the item you want to add is not in our list, you can add them using the form below.
                         The item will be added to your inventory and to our item list so you can search for it then.
                     </p>
+
+                        <div class="field text required">
+                            <label for="nameField">Name<span class="asterisk">*</span></label>
+
+                            <div class="explanation">
+                                Name of the item.
+                            </div>
+                            <input type="text" name="inventory_name" id="nameField">
+                        </div>
+                        <div class="field select">
+                            <label for="packagingField">Packaging</label>
+
+                            <div class="explanation">
+                                Packaging type.
+                            </div>
+                            <select name="packagingField" id="packagingField">
+                                <option value="bottle">Bottle</option>
+                                <option value="can">Can</option>
+                                <option value="carton">Carton</option>
+                            </select>
+                        </div>
+                        <div class="field select">
+                            <label for="contentField">Measurements</label>
+
+                            <div class="explanation">
+                                Package measurements.
+                            </div>
+                            <input type="text" name="contentField" id="contentField">
+                            <select name="unitField" id="unitField">
+                                <option value="liter">Liter</option>
+                                <option value="gram">Gram</option>
+                            </select>
+                        </div>
+                        <div class="field checkbox">
+                            <label for="inventoryField">Add to inventory</label>
+                            <input selected type="checkbox" id="add_to_inventoryField" name="add_to_inventoryField" value="1" checked />
+                        </div>
+                    
+                        <div class="field submit">
+                            <button id="create_new_item" type="submit">Create item</button> <button id="cancel_new_item" type="submit">Clear</button>
+                        </div>
                 
                 </section>
 

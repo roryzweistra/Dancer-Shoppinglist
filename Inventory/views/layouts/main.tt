@@ -8,9 +8,12 @@
 	<meta name="viewport" content="initial-scale=1">
 	<link href="/css/all.css" rel="stylesheet">
 	<script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="/javascripts/noty/jquery.noty.js"></script>
+    <script type="text/javascript" src="/javascripts/inventory.js"></script>
 	<script type="text/javascript" src="/javascripts/jquery.pjax.js"></script>
     <script type="text/javascript" src="/javascripts/jquery.tablesorter.min.js"></script>
-	<script type="text/javascript" src="/javascripts/inventory.js"></script>
+    <script type="text/javascript" src="/javascripts/noty/layouts/top.js"></script>
+    <script type="text/javascript" src="/javascripts/noty/themes/default.js"></script>
 	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>

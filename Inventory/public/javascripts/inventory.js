@@ -7,6 +7,7 @@ $( document ).ready( function() {
     populate_inventory_table();
     wire_search_inventory_item();
     wire_inventory_controls_button();
+    wire_create_new_item_button();
 });
 
 var init_pjax = function() {
@@ -31,6 +32,7 @@ var init_pjax = function() {
         populate_inventory_table();
         wire_search_inventory_item();
         wire_inventory_controls_button();
+        wire_create_new_item_button();
     });
 };
 
@@ -77,6 +79,27 @@ var wire_create_new_inventory_button = function( html ) {
                 wire_inventory_list();
                 $( '#inventory_control' ).html( html );
                 wire_create_inventory_form();
+            }
+        });
+    });
+};
+
+var wire_create_new_item_button = function() {
+    $( '#create_new_item' ).click( function( e ) {
+        e.preventDefault();
+        //TODO: get current inventory from session.
+        $.ajax({
+            type    : 'POST',
+            url     : '/item/create',
+            data    : {
+                name                : $( '#nameField'               ).val(),
+                packaging           : $( '#packagingField'          ).val(),
+                content             : $( '#contentField'            ).val(),
+                unit                : $( '#unitField'               ).val(),
+                add_to_inventory    : $( '#add_to_inventoryField'   ).val()
+            },
+            success : function( data ) {
+                show_notification( data );
             }
         });
     });
@@ -151,9 +174,17 @@ var wire_inventory_list = function() {
 
 var wire_search_inventory_item = function() {
     $( '#search_inventory_item' ).focus( function( e ) {
-        console.log( 'focus' );
-        $( this ).val( '' );
+        
+        if ( $( this ).val() ==='Search items in your inventory' ) {
+            $( this ).val( '' );
+        }
+        
         $( '.item_in_list' ).removeClass( 'hide' );
+    })
+    .blur( function() {
+        if ( $( this ).val() === '' ) {
+            $( this ).val( 'Search items in your inventory' );
+        }
     })
     .keyup( function( e ) {
         var value = $( this ).val();
@@ -187,4 +218,12 @@ var populate_inventory_table = function() {
         debug : true
         //sortList : [[1,0]]
     }); 
+};
+
+var show_notification = function( data ) {
+	noty({ 
+		timeout	: 3000,
+		text	: data.text,
+		type	: data.type
+	});
 };
