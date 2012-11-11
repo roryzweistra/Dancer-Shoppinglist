@@ -1,0 +1,11 @@
+{
+	"status_code_300"   : "300",
+    "status_text_300"   : "Item could not be added",
+    "status_type_300"   : "error",
+    "status_code_301"   : "301",
+    "status_text_301"   : "Item added",
+    "status_type_301"   : "success",
+    "status_code_302"   : "302",
+    "status_text_302"   : "Item name is missing. The name is mandatory for adding an item.",
+    "status_type_302"   : "error"
+}
