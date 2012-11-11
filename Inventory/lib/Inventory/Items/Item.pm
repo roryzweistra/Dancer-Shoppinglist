@@ -3,17 +3,19 @@ package Inventory::Items::Item;
 use Dancer ':syntax';
 use Dancer::Plugin::DBIC 'schema';
 
-use Data::GUID::URLSafe;
+use Inventory::Utils;
 
 sub create {
-	print "in create\n";
 	my $self	= shift;
-	my $name	= shift;
-	my $guid	= Data::GUID->new->as_base64_urlsafe;
+    my $values  = shift;
+	my $guid	= Inventory::Utils->new->create_guid();
 	my $item	= schema( 'Inventory' )->resultset( 'Items' )->update_or_new(
         {
-			guid	=> $guid,
-			name	=> $name,
+			guid	    => $guid,
+			name	    => $values->{ name      },
+            content     => $values->{ content   },
+            unit        => $values->{ unit      },
+            packaging   => $values->{ packaging }
         },
 		{
 			key => 'primary'
@@ -21,8 +23,26 @@ sub create {
 	);
 
 	$item->insert();
-
-	return $item->in_storage();
+    
+    return 300 unless $item->in_storage();
+    
+    if ( $values->{ add_to_inventory } ) {
+        $inventory_item = schema( 'Inventory' )->resultset( 'Inventory_items' )->new(
+            {
+                guid        => Inventory::Utils->new->create_guid(),
+                item        => $guid,
+                inventory   => $values->{ inventory }
+            },
+            {
+                key => 'primary'
+            }
+        );
+        
+        $inventory_item->insert();
+    }
+    
+    
+    return 301 if $item->in_storage();
 };
 
 sub new {
